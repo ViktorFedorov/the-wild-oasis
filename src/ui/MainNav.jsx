@@ -6,7 +6,7 @@ const NavList = styled.ul`
   gap: 0.8rem;
 `
 
-const Link = styled.a`
+const StyledNavLink = styled(NavLink)`
   &:link,
   &:visited {
     display: flex;
@@ -46,9 +46,21 @@ const Link = styled.a`
 `
 
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 const MainNav = () => {
-  return <nav>navigation</nav>
+  return (
+    <nav>
+      <NavList>
+        <li>
+          <StyledNavLink to='/dashboard'>Home</StyledNavLink>
+        </li>
+        <li>
+          <StyledNavLink to='/bookings'>Bookings</StyledNavLink>
+        </li>
+      </NavList>
+    </nav>
+  )
 }
 
 export default MainNav
