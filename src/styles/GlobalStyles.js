@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyles = createGlobalStyle`
-  html {
+  :root {
     /* Indigo */
     --color-brand-50: #eef2ff;
     --color-brand-100: #e0e7ff;
@@ -79,6 +79,8 @@ const GlobalStyles = createGlobalStyle`
     min-height: 100vh;
     line-height: 1.5;
     font-size: 1.6rem;
+
+    background-color: #ab4848;
   }
 
   input,
