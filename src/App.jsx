@@ -1,11 +1,5 @@
 import React from 'react'
-import {
-  BrowserRouter,
-  Navigate,
-  redirect,
-  Route,
-  Routes
-} from 'react-router-dom'
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import Dashboard from './pages/Dashboard.jsx'
 import Bookings from './pages/Bookings.jsx'
 import Users from './pages/Users'

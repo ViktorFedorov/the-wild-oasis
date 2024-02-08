@@ -1,9 +1,15 @@
 import styled from 'styled-components'
+import { AiOutlineHome } from 'react-icons/ai'
+import { HiCalendarDays } from 'react-icons/hi2'
+import { IoSettingsOutline } from 'react-icons/io5'
+import { LuUsers } from 'react-icons/lu'
+import { LiaCitySolid } from 'react-icons/lia'
 
 const NavList = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
+  padding-top: 4rem;
 `
 
 const StyledNavLink = styled(NavLink)`
@@ -53,10 +59,34 @@ const MainNav = () => {
     <nav>
       <NavList>
         <li>
-          <StyledNavLink to='/dashboard'>Home</StyledNavLink>
+          <StyledNavLink to='/dashboard'>
+            <AiOutlineHome />
+            <span>Home</span>
+          </StyledNavLink>
         </li>
         <li>
-          <StyledNavLink to='/bookings'>Bookings</StyledNavLink>
+          <StyledNavLink to='/bookings'>
+            <HiCalendarDays />
+            <span>Bookings</span>
+          </StyledNavLink>
+        </li>
+        <li>
+          <StyledNavLink to='/cabins'>
+            <LiaCitySolid />
+            <span>Cabins</span>
+          </StyledNavLink>
+        </li>
+        <li>
+          <StyledNavLink to='/users'>
+            <LuUsers />
+            <span>Users</span>
+          </StyledNavLink>
+        </li>
+        <li>
+          <StyledNavLink to='/settings'>
+            <IoSettingsOutline />
+            <span>Settings</span>
+          </StyledNavLink>
         </li>
       </NavList>
     </nav>

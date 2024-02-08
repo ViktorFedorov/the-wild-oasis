@@ -79,8 +79,6 @@ const GlobalStyles = createGlobalStyle`
     min-height: 100vh;
     line-height: 1.5;
     font-size: 1.6rem;
-
-    background-color: #ab4848;
   }
 
   input,
