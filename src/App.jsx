@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import Dashboard from './pages/Dashboard.jsx'
 import Bookings from './pages/Bookings.jsx'
@@ -10,10 +10,20 @@ import Login from './pages/Login.jsx'
 import PageNotFound from './pages/PageNotFound.jsx'
 import GlobalStyles from './styles/GlobalStyles.js'
 import AppLayout from './ui/AppLayout.jsx'
+import { QueryClient } from '@tanstack/react-query'
+import { QueryClientProvider } from '@tanstack/react-query/src/QueryClientProvider'
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 60 * 1000
+    }
+  }
+})
 
 const App = () => {
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
       <GlobalStyles />
       <BrowserRouter>
         <Routes>
@@ -30,7 +40,7 @@ const App = () => {
           <Route path='*' element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
-    </>
+    </QueryClientProvider>
   )
 }
 
