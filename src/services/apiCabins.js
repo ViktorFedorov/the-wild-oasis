@@ -11,4 +11,23 @@ const getCabins = async () => {
   return data
 }
 
-export { getCabins }
+/////////////////////////////////////////
+
+const deleteCabin = async (id) => {
+  const { data, error } = await supabase.from('cabins').delete().eq('id', id)
+  console.log(data)
+  if (error) {
+    console.error('Cabins not deleted')
+    throw new Error(error)
+  }
+
+  return data
+}
+
+/////////////////////////////////////////////////
+
+const createCabin = async (data) => {
+  const { cabin, error } = await supabase.from('cabins').insert([data]).select()
+}
+
+export { getCabins, deleteCabin, createCabin }
