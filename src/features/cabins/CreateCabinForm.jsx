@@ -47,7 +47,12 @@ const Error = styled.span`
 `
 
 function CreateCabinForm() {
-  const { register, handleSubmit, reset } = useForm()
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors }
+  } = useForm()
   const queryClient = useQueryClient()
 
   const { mutate } = useMutation({
@@ -61,25 +66,46 @@ function CreateCabinForm() {
     }
   })
 
-  const subm = (data) => {
+  const submitHandler = (data) => {
     mutate(data)
   }
 
+  const errorsHandler = (err) => console.log(err)
+
   return (
-    <Form onSubmit={handleSubmit(subm)}>
+    <Form onSubmit={handleSubmit(submitHandler, errorsHandler)}>
       <FormRow>
         <Label htmlFor='name'>Cabin name</Label>
-        <Input type='text' id='name' {...register('name')} />
+        <Input
+          type='text'
+          id='name'
+          {...register('name', {
+            required: 'обзательно к зполнению',
+            min: {
+              value: 3,
+              message: 'Поле должно быть длинее 3 символов'
+            }
+          })}
+        />
+        <Error>{errors?.name && <p>{errors?.name?.message}</p>}</Error>
       </FormRow>
 
       <FormRow>
         <Label htmlFor='maxCapacity'>Maximum capacity</Label>
-        <Input type='number' id='maxCapacity' {...register('maxCapacity')} />
+        <Input
+          type='number'
+          id='maxCapacity'
+          {...register('maxCapacity', { required: 'обзательно к зполнению' })}
+        />
       </FormRow>
 
       <FormRow>
         <Label htmlFor='regularPrice'>Regular price</Label>
-        <Input type='number' id='regularPrice' {...register('regularPrice')} />
+        <Input
+          type='number'
+          id='regularPrice'
+          {...register('regularPrice', { required: 'обзательно к зполнению' })}
+        />
       </FormRow>
 
       <FormRow>
@@ -88,7 +114,7 @@ function CreateCabinForm() {
           type='number'
           id='discount'
           defaultValue={0}
-          {...register('discount')}
+          {...register('discount', { required: 'обзательно к зполнению' })}
         />
       </FormRow>
 
